@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Renk Değiştirme Uygulaması</title>
+    <style>
+        html, body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background-color: white;
+        }
+        #saat {
+            color: black;
+            position: absolute;
+            top: 1%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 2000%;
+            text-align: center;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            font-weight: 800;   
+               
+            
+        }
+    
+    </style>
+</head>
+<body>
+    <h1 id="saat" onclick="renkDegistir()"></h1>
+
+    <!--BY METE_GUN-->
+
+    
+    <script>
+        // Saati her saniye güncelle
+        setInterval(function() {
+            document.getElementById("saat").innerHTML = new Date().toLocaleTimeString();
+        }, 1000);
+
+        function renkDegistir() {
+            let arkaplan = window.getComputedStyle(document.body).backgroundColor;
+
+            // Arka plan beyazsa siyah yap, yazıyı beyaza döndür
+            if (arkaplan === "rgb(255, 255, 255)") {
+                document.body.style.backgroundColor = "black";
+                document.getElementById("saat").style.color = "white";
+
+            // Arka plan siyahsa kırmızı yap, yazıyı sarıya döndür
+            } else if (arkaplan === "rgb(0, 0, 0)") {
+                document.body.style.backgroundColor = "blue";
+                document.getElementById("saat").style.color = "yellow";
+
+            // Arka plan kırmızıysa mavi yap, yazıyı beyaza döndür
+            } else if (arkaplan === "rgb(0, 0, 255)") {
+                document.body.style.backgroundColor = "rgb(54, 81, 236)";
+                document.getElementById("saat").style.color = "rgb(76, 255, 186)";
+
+            // Arka plan maviyse mor yap, yazıyı beyaza döndür
+            } else if (arkaplan === "rgb(54, 81, 236)") {
+                document.body.style.backgroundColor = "yellow";
+                document.getElementById("saat").style.color = "red";
+
+            // Mor olduğunda beyaza geri dön
+            } else if (arkaplan === "rgb(255, 255, 0)") {
+                document.body.style.backgroundColor = "white";
+                document.getElementById("saat").style.color = "black";
+            }
+        }
+    </script>
+</body>
+</html>
